@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:mariadb://localhost:3306/station}
+    username: ${DATABASE_USER:root}
+    password: ${DATABASE_PASSWORD:anna}
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
