@@ -1,6 +1,8 @@
 package pl.edu.pk.it.station.interfaces.temperature;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,5 +18,10 @@ public class RootController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String login() {
         return baseUrl+"/oauth2/code/okta";
+    }
+
+    @RequestMapping(value = "/authorities", method = RequestMethod.GET)
+    public String authorities(@AuthenticationPrincipal OidcUser oidcUser) {
+        return oidcUser.getAuthorities().toString();
     }
 }
