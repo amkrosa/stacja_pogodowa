@@ -7,3 +7,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+okta:
+  oauth2:
+    issuer: ${OKTA_OAUTH2_ISSUER}
+    client-id: ${OKTA_OAUTH2_CLIENT_ID_WEB}
+    client-secret: ${OKTA_OAUTH2_CLIENT_SECRET_WEB}
+    post-logout-redirect-uri: ${BASE_URL}/logout/callback

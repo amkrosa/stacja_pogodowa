@@ -12,7 +12,7 @@ import java.time.LocalTime;
 @Table(name = "temperature")
 public class TemperatureEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_temperature;
     @Column(name = "value")
     private double value;
