@@ -1,8 +1,7 @@
 package pl.edu.pk.it.station.domain.temperature.service;
 
-import pl.edu.pk.it.station.domain.temperature.Temperature;
 import pl.edu.pk.it.station.domain.temperature.repository.TemperatureRepository;
-import pl.edu.pk.it.station.infrastructure.dto.TemperatureDto;
+import pl.edu.pk.it.station.domain.temperature.Temperature;
 
 import java.util.List;
 
@@ -15,7 +14,7 @@ public class DomainTemperatureService implements TemperatureService {
     }
 
     @Override
-    public List<TemperatureDto> getAll() {
+    public List<Temperature> getAll() {
         return temperatureRepository.getAll();
     }
 }
