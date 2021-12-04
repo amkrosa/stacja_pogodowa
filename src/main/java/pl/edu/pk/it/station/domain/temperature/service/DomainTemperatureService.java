@@ -17,4 +17,9 @@ public class DomainTemperatureService implements TemperatureService {
     public List<Temperature> getAll() {
         return temperatureRepository.getAll();
     }
+
+    @Override
+    public void saveAll(List<Temperature> temperatures) {
+        temperatureRepository.saveAll(temperatures);
+    }
 }

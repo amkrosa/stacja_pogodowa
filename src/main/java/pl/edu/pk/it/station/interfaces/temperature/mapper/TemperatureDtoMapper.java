@@ -10,4 +10,6 @@ import java.util.List;
 public interface TemperatureDtoMapper {
     List<TemperatureDto> toDtoList(List<Temperature> temperatures);
     TemperatureDto toDto(Temperature temperature);
+    Temperature toTemperature(TemperatureDto temperature);
+    List<Temperature> toTemperatureList(List<TemperatureDto> temperatures);
 }

@@ -1,6 +1,7 @@
 package pl.edu.pk.it.station.interfaces.temperature.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,9 +25,10 @@ public class TemperatureController {
         return dto;
     }
 
-    /*@RequestMapping(value = "/temperatures", consumes = "application/json", method = RequestMethod.POST)
-    public TemperatureListResponseDto insertTemperatures(@RequestBody InsertTemperatureRequestDto insertTemperatureRequestDto) {
-        var request = temperatureMapper.insertTemperatureRequestFromEntity(insertTemperatureRequestDto);
-        //insert
-    }*/
+    @RequestMapping(value = "/temperatures", consumes = "application/json", method = RequestMethod.POST)
+    public TemperatureListDto insertTemperatures(@RequestBody TemperatureListDto temperatureListDto) {
+        var request = temperatureDtoMapper.toTemperatureList(temperatureListDto.getItemList());
+        temperatureService.saveAll(request);
+        return temperatureListDto;
+    }
 }
