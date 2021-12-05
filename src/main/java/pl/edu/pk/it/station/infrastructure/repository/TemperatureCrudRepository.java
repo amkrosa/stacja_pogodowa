@@ -13,6 +13,6 @@ import java.util.List;
 @Repository
 public interface TemperatureCrudRepository extends JpaRepository<TemperatureEntity, Integer> {
 
-    @Query(value = "select value, date, time FROM temperature ORDER BY id_temperature desc LIMIT ?1", nativeQuery = true)
+    @Query(value = "select * FROM temperature ORDER BY id_temperature desc LIMIT ?1", nativeQuery = true)
     List<TemperatureEntity> getLast(int n);
 }
