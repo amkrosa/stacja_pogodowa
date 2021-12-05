@@ -19,7 +19,6 @@ public class TemperatureController {
     private final TemperatureDtoMapper temperatureDtoMapper;
 
     @RequestMapping(value = "/temperatures", method = RequestMethod.GET)
-    @PreAuthorize("hasAuthority('SCOPE_api')")
     public TemperatureListDto allTemperatures() {
         var temperatures = temperatureService.getAll();
         var dto = new TemperatureListDto();
@@ -28,7 +27,6 @@ public class TemperatureController {
     }
 
     @RequestMapping(value = "/temperatures", consumes = "application/json", method = RequestMethod.POST)
-    @PreAuthorize("hasAuthority('SCOPE_api')")
     public TemperatureListDto insertTemperatures(@RequestBody TemperatureListDto temperatureListDto) {
         var request = temperatureDtoMapper.toTemperatureList(temperatureListDto.getItemList());
         temperatureService.saveAll(request);
