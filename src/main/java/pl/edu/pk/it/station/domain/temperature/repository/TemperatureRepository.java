@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TemperatureRepository {
+    List<Temperature> getLast(int n);
     List<Temperature> getAll();
     void save(Temperature temperature);
     void saveAll(List<Temperature> temperatures);

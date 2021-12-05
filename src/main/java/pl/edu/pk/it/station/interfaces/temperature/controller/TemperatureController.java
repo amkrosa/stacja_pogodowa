@@ -30,6 +30,9 @@ public class TemperatureController {
     public TemperatureListDto insertTemperatures(@RequestBody TemperatureListDto temperatureListDto) {
         var request = temperatureDtoMapper.toTemperatureList(temperatureListDto.getItemList());
         temperatureService.saveAll(request);
-        return temperatureListDto;
+        var responseList = temperatureDtoMapper.toDtoList(temperatureService.getLast(temperatureListDto.getItemList().size()));
+        var response = new TemperatureListDto();
+        response.setItemList(responseList);
+        return response;
     }
 }

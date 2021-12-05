@@ -25,6 +25,14 @@ public class TemperatureRepositoryImpl implements TemperatureRepository {
     private final TemperatureEntityMapper temperatureEntityMapper;
 
     @Override
+    public List<Temperature> getLast(int n) {
+        var query = temperatureCrudRepository.getLast(n);
+        return query.stream()
+                .map(temperatureEntityMapper::toTemperature)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public List<Temperature> getAll() {
         var all = StreamSupport.stream(temperatureCrudRepository.findAll().spliterator(), false);
         return all.map(temperatureEntityMapper::toTemperature)
