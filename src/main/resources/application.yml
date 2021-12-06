@@ -10,6 +10,7 @@ spring:
       max-idle: 5
       min-idle: 7
       default-auto-commit: true
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
