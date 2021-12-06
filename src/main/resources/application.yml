@@ -1,9 +1,8 @@
 spring:
   datasource:
-    url: ${DATABASE_URL:jdbc:mariadb://localhost:3306/station}
+    url: ${DATABASE_URL:jdbc:postgres://localhost:5432/station}
     username: ${DATABASE_USER:root}
     password: ${DATABASE_PASSWORD:}
-    driver-class-name: org.mariadb.jdbc.Driver
     tomcat:
       initial-size: 5
       max-wait: 20000
@@ -11,6 +10,7 @@ spring:
       max-idle: 5
       min-idle: 7
       default-auto-commit: true
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
