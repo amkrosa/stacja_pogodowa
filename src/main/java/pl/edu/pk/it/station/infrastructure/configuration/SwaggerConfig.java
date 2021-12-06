@@ -16,6 +16,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
+@EnableWebMvc
 public class SwaggerConfig {
     public ApiInfo apiInfo() {
         return new ApiInfoBuilder()
