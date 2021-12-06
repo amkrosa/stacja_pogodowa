@@ -4,6 +4,13 @@ spring:
     username: ${DATABASE_USER:root}
     password: ${DATABASE_PASSWORD:}
     driver-class-name: org.mariadb.jdbc.Driver
+    tomcat:
+      initial-size: 5
+      max-wait: 20000
+      max-active: 9
+      max-idle: 5
+      min-idle: 7
+      default-auto-commit: true
   jpa:
     hibernate:
       ddl-auto: update
