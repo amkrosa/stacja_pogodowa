@@ -18,7 +18,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 @EnableWebMvc
-@ComponentScan(basePackageClasses = StationApplication.class)
 public class SwaggerConfig {
     public ApiInfo apiInfo() {
         return new ApiInfoBuilder()
