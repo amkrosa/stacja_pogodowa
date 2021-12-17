@@ -8,7 +8,7 @@ import java.time.LocalTime;
 
 @Configuration
 public class SwaggerConfig {
-    public SwaggerConfig() {
+    static {
         SpringDocUtils.getConfig().replaceWithClass(LocalTime.class, String.class);
     }
 }
