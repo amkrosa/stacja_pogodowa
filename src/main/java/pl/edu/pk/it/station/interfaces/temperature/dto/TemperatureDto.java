@@ -12,17 +12,14 @@ import java.time.LocalTime;
 
 @Data
 public class TemperatureDto implements Serializable {
-    @NotNull
-    @NotBlank
+    @NotBlank(message = "Value field cannot be empty")
     private double value;
 
     @JsonFormat(pattern = "HH:mm:ss")
-    @NotNull
-    @NotBlank
+    @NotBlank(message = "Time field cannot be empty")
     private LocalTime time;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    @NotNull
-    @NotBlank
+    @NotBlank(message = "Date field cannot be empty")
     private LocalDate date;
 }
