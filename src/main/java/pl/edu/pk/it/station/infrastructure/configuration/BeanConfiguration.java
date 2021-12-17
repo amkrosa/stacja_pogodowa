@@ -11,9 +11,4 @@ import pl.edu.pk.it.station.domain.temperature.service.TemperatureService;
 @Configuration
 @ComponentScan(basePackageClasses = StationApplication.class)
 public class BeanConfiguration {
-
-    @Bean
-    TemperatureService temperatureService(final TemperatureRepository temperatureRepository) {
-        return new DomainTemperatureService(temperatureRepository);
-    }
 }

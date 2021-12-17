@@ -1,11 +1,13 @@
 package pl.edu.pk.it.station.domain.temperature.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import pl.edu.pk.it.station.domain.temperature.repository.TemperatureRepository;
 import pl.edu.pk.it.station.domain.temperature.Temperature;
 
 import java.util.List;
 
+@Service
 @RequiredArgsConstructor
 public class DomainTemperatureService implements TemperatureService {
 
