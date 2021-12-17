@@ -13,6 +13,8 @@ import pl.edu.pk.it.station.domain.temperature.service.TemperatureService;
 import pl.edu.pk.it.station.interfaces.temperature.dto.TemperatureListDto;
 import pl.edu.pk.it.station.interfaces.temperature.mapper.TemperatureDtoMapper;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/station")
@@ -30,7 +32,7 @@ public class TemperatureController {
     }
 
     @RequestMapping(value = "/temperatures", consumes = "application/json", method = RequestMethod.POST)
-    public TemperatureListDto insertTemperatures(@RequestBody TemperatureListDto temperatureListDto) {
+    public TemperatureListDto insertTemperatures(@Valid @RequestBody TemperatureListDto temperatureListDto) {
         try {
             var request = temperatureDtoMapper.toTemperatureList(temperatureListDto.getItemList());
             temperatureService.saveAll(request);
