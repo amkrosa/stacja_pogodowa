@@ -19,9 +19,4 @@ public class RootController {
     public String login() {
         return baseUrl+"/oauth2/code/okta";
     }
-
-    @RequestMapping(value = "/authorities", method = RequestMethod.GET)
-    public String authorities(@AuthenticationPrincipal OidcUser oidcUser) {
-        return oidcUser.getAuthorities().toString();
-    }
 }

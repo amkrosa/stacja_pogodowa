@@ -12,7 +12,6 @@ import java.time.LocalTime;
 public class StationApplication {
 
     public static void main(String[] args) {
-        SpringDocUtils.getConfig().replaceWithClass(LocalTime.class, String.class);
         SpringApplication.run(StationApplication.class, args);
     }
 
