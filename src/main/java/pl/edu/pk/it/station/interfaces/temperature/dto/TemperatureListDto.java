@@ -9,6 +9,7 @@ import java.util.List;
 
 @Data
 public class TemperatureListDto {
+    @Valid
     @NotEmpty(message = "Temperature list cannot be empty")
     private List<@Valid TemperatureDto> itemList;
 }
