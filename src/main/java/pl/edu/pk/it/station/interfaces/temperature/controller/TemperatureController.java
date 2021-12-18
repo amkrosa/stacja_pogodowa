@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +17,7 @@ import pl.edu.pk.it.station.interfaces.temperature.mapper.TemperatureDtoMapper;
 import javax.validation.Valid;
 
 @RequiredArgsConstructor
+@Validated
 @RestController
 @RequestMapping("/station")
 public class TemperatureController {
@@ -32,7 +34,7 @@ public class TemperatureController {
     }
 
     @RequestMapping(value = "/temperatures", consumes = "application/json", method = RequestMethod.POST)
-    public TemperatureListDto insertTemperatures(@Valid @RequestBody TemperatureListDto temperatureListDto) {
+    public TemperatureListDto insertTemperatures(@RequestBody @Valid TemperatureListDto temperatureListDto) {
         try {
             var request = temperatureDtoMapper.toTemperatureList(temperatureListDto.getItemList());
             temperatureService.saveAll(request);
