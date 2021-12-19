@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import pl.edu.pk.it.station.domain.temperature.repository.TemperatureRepository;
 import pl.edu.pk.it.station.domain.temperature.Temperature;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -21,6 +24,22 @@ public class DomainTemperatureService implements TemperatureService {
     @Override
     public List<Temperature> getAll() {
         return temperatureRepository.getAll();
+    }
+
+    @Override
+    public List<Temperature> getFiltered(LocalDate date,
+                                         LocalDate fromDate,
+                                         Double fromValue,
+                                         Double toValue) {
+        List<Temperature> list = new ArrayList<>();
+        if (date!=null) {
+            list.addAll(temperatureRepository.getSingleDate(date));
+        } else if (fromValue != null && toValue != null) {
+            list.addAll(temperatureRepository.getBetweenValues(fromValue, toValue));
+        } else if (fromDate != null) {
+            list.addAll(temperatureRepository.getFromDate(fromDate));
+        }
+        return new ArrayList<>(new HashSet<>(list));
     }
 
     @Override
