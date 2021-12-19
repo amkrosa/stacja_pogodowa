@@ -5,9 +5,9 @@ server:
     include-exception: true
 spring:
   datasource:
-    url: ${DATABASE_URL:jdbc:postgres://localhost:5432/station}
-    username: ${DATABASE_USER:root}
-    password: ${DATABASE_PASSWORD:}
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/station}
+    username: ${DATABASE_USER:station}
+    password: ${DATABASE_PASSWORD:anna}
     tomcat:
       initial-size: 5
       max-wait: 20000
@@ -25,4 +25,4 @@ okta:
     issuer: ${OKTA_OAUTH2_ISSUER:}
     client-id: ${OKTA_OAUTH2_CLIENT_ID_WEB:}
     client-secret: ${OKTA_OAUTH2_CLIENT_SECRET_WEB:}
-    post-logout-redirect-uri: ${BASE_URL:}/logout/callback
+    post-logout-redirect-uri: ${BASE_URL:localhost:8080}/logout/callback
