@@ -12,7 +12,7 @@ import pl.edu.pk.it.station.interfaces.temperature.dto.TemperatureListDto;
 @RequestMapping("/")
 public class RootController {
 
-    @Value("${BASE_URL}")
+    @Value("${BASE_URL:localhost:8080}")
     private String baseUrl;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
