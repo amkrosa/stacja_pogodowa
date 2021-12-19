@@ -12,6 +12,8 @@ import pl.edu.pk.it.station.infrastructure.entity.TemperatureEntity;
 import pl.edu.pk.it.station.infrastructure.mapper.TemperatureEntityMapper;
 
 import java.math.BigInteger;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,16 +29,31 @@ public class TemperatureRepositoryImpl implements TemperatureRepository {
     @Override
     public List<Temperature> getLast(int n) {
         var query = temperatureCrudRepository.getLast(n);
-        return query.stream()
-                .map(temperatureEntityMapper::toTemperature)
-                .collect(Collectors.toList());
+        return temperatureEntityMapper.toTemperatureList(query);
     }
 
     @Override
     public List<Temperature> getAll() {
-        var all = StreamSupport.stream(temperatureCrudRepository.findAll().spliterator(), false);
-        return all.map(temperatureEntityMapper::toTemperature)
-                .collect(Collectors.toList());
+        var all = new ArrayList<>(temperatureCrudRepository.findAll());
+        return temperatureEntityMapper.toTemperatureList(all);
+    }
+
+    @Override
+    public List<Temperature> getBetweenValues(double from, double to) {
+        var query = temperatureCrudRepository.findByValueBetween(from, to);
+        return temperatureEntityMapper.toTemperatureList(query);
+    }
+
+    @Override
+    public List<Temperature> getSingleDate(LocalDate date) {
+        var query = temperatureCrudRepository.findByDateEquals(date);
+        return temperatureEntityMapper.toTemperatureList(query);
+    }
+
+    @Override
+    public List<Temperature> getFromDate(LocalDate fromDate) {
+        var query = temperatureCrudRepository.findByDateAfter(fromDate);
+        return temperatureEntityMapper.toTemperatureList(query);
     }
 
     @Override
