@@ -1,5 +1,6 @@
 package pl.edu.pk.it.station.infrastructure.repository;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -22,5 +23,5 @@ public interface TemperatureCrudRepository extends JpaRepository<TemperatureEnti
     
     List<TemperatureEntity> findByValueBetween(double from, double to);
 
-    List<TemperatureEntity> findByDateAfterOrderByDateAscTimeAsc(LocalDate date);
+    List<TemperatureEntity> findByDateAfterOrderByDateAscTimeAsc(LocalDate date, Sort sort);
 }

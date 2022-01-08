@@ -1,6 +1,7 @@
 package pl.edu.pk.it.station.infrastructure.repository;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import pl.edu.pk.it.station.domain.temperature.repository.TemperatureRepository;
 import pl.edu.pk.it.station.domain.temperature.Temperature;
@@ -45,7 +46,7 @@ public class TemperatureRepositoryImpl implements TemperatureRepository {
 
     @Override
     public List<Temperature> getFromDate(LocalDate fromDate) {
-        var query = temperatureCrudRepository.findByDateAfterOrderByDateAscTimeAsc(fromDate);
+        var query = temperatureCrudRepository.findByDateAfterOrderByDateAscTimeAsc(fromDate, Sort.by(Sort.Direction.ASC, "date", "time"));
         return temperatureEntityMapper.toTemperatureList(query);
     }
 
