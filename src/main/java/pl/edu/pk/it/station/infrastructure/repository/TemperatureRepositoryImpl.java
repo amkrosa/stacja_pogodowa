@@ -1,23 +1,16 @@
 package pl.edu.pk.it.station.infrastructure.repository;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import pl.edu.pk.it.station.domain.temperature.repository.TemperatureRepository;
 import pl.edu.pk.it.station.domain.temperature.Temperature;
 import pl.edu.pk.it.station.infrastructure.entity.TemperatureEntity;
 import pl.edu.pk.it.station.infrastructure.mapper.TemperatureEntityMapper;
 
-import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Repository
 @RequiredArgsConstructor
@@ -52,7 +45,7 @@ public class TemperatureRepositoryImpl implements TemperatureRepository {
 
     @Override
     public List<Temperature> getFromDate(LocalDate fromDate) {
-        var query = temperatureCrudRepository.findByDateAfter(fromDate);
+        var query = temperatureCrudRepository.findByDateAfterOrderByDateAscTimeAsc(fromDate);
         return temperatureEntityMapper.toTemperatureList(query);
     }
 

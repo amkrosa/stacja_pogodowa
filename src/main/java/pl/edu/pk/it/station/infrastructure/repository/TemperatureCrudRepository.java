@@ -19,8 +19,8 @@ public interface TemperatureCrudRepository extends JpaRepository<TemperatureEnti
     List<TemperatureEntity> getLast(int n);
 
     List<TemperatureEntity> findByDateEquals(LocalDate date);
-
+    
     List<TemperatureEntity> findByValueBetween(double from, double to);
 
-    List<TemperatureEntity> findByDateAfter(LocalDate date);
+    List<TemperatureEntity> findByDateAfterOrderByDateAscTimeAsc(LocalDate date);
 }
