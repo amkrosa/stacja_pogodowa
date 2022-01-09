@@ -19,9 +19,9 @@ public interface TemperatureCrudRepository extends JpaRepository<TemperatureEnti
     @Query(value = "select * FROM temperature ORDER BY id_temperature desc LIMIT ?1", nativeQuery = true)
     List<TemperatureEntity> getLast(int n);
 
-    List<TemperatureEntity> findByDateEquals(LocalDate date);
+    List<TemperatureEntity> findByDateEqualsOrderByDateAscTimeAsc(LocalDate date);
     
-    List<TemperatureEntity> findByValueBetween(double from, double to);
+    List<TemperatureEntity> findByValueBetweenOrderByDateAscTimeAsc(double from, double to);
 
-    List<TemperatureEntity> findByDateAfterOrderByDateAscTimeAsc(LocalDate date, Sort sort);
+    List<TemperatureEntity> findByDateAfterOrderByDateAscTimeAsc(LocalDate date);
 }

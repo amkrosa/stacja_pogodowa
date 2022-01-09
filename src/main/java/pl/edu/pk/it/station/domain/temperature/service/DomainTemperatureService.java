@@ -1,6 +1,7 @@
 package pl.edu.pk.it.station.domain.temperature.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import pl.edu.pk.it.station.domain.temperature.repository.TemperatureRepository;
 import pl.edu.pk.it.station.domain.temperature.Temperature;
@@ -8,8 +9,10 @@ import pl.edu.pk.it.station.domain.temperature.Temperature;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 
+@Log4j2
 @Service
 @RequiredArgsConstructor
 public class DomainTemperatureService implements TemperatureService {
@@ -39,7 +42,7 @@ public class DomainTemperatureService implements TemperatureService {
         } else if (fromDate != null) {
             list.addAll(temperatureRepository.getFromDate(fromDate));
         }
-        return new ArrayList<>(new HashSet<>(list));
+        return new ArrayList<>(new LinkedHashSet<>(list));
     }
 
     @Override

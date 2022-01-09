@@ -28,25 +28,25 @@ public class TemperatureRepositoryImpl implements TemperatureRepository {
 
     @Override
     public List<Temperature> getAll() {
-        var all = new ArrayList<>(temperatureCrudRepository.findAll());
+        var all = new ArrayList<>(temperatureCrudRepository.findAll(Sort.by("date", "time")));
         return temperatureEntityMapper.toTemperatureList(all);
     }
 
     @Override
     public List<Temperature> getBetweenValues(double from, double to) {
-        var query = temperatureCrudRepository.findByValueBetween(from, to);
+        var query = temperatureCrudRepository.findByValueBetweenOrderByDateAscTimeAsc(from, to);
         return temperatureEntityMapper.toTemperatureList(query);
     }
 
     @Override
     public List<Temperature> getSingleDate(LocalDate date) {
-        var query = temperatureCrudRepository.findByDateEquals(date);
+        var query = temperatureCrudRepository.findByDateEqualsOrderByDateAscTimeAsc(date);
         return temperatureEntityMapper.toTemperatureList(query);
     }
 
     @Override
     public List<Temperature> getFromDate(LocalDate fromDate) {
-        var query = temperatureCrudRepository.findByDateAfterOrderByDateAscTimeAsc(fromDate, Sort.by(Sort.Direction.ASC, "date", "time"));
+        var query = temperatureCrudRepository.findByDateAfterOrderByDateAscTimeAsc(fromDate);
         return temperatureEntityMapper.toTemperatureList(query);
     }
 

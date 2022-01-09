@@ -3,6 +3,9 @@ server:
     include-message: always
     include-binding-errors: always
     include-exception: true
+springdoc:
+  swagger-ui:
+    disable-swagger-default-url: true
 spring:
   datasource:
     url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/station}
