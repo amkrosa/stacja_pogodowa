@@ -16,7 +16,7 @@ public class RootController {
     private String baseUrl;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String login() {
-        return baseUrl+"/oauth2/code/okta";
+    public String swagger() {
+        return baseUrl+"/swagger-ui.html";
     }
 }
